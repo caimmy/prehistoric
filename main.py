@@ -9,8 +9,12 @@ sys.setdefaultencoding('utf-8')
 
 from flask import Flask, session
 
-app = Flask(__name__)
+from archgis import archgis_app
 
+app = Flask(__name__)
+app.config.from_pyfile('application.cfg')
+
+app.register_blueprint(archgis_app, url_prefix='/archgis')
 
 @app.route('/')
 def hello_world():
