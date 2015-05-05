@@ -30,9 +30,10 @@ class Settlement(Base):
     '''
     __tablename__ = 'arch_settlement'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(128), nullable=False)
-    desc = Column(Text)
+    id          = Column(Integer, primary_key=True, autoincrement=True)
+    name        = Column(String(128), nullable=False)
+    desc        = Column(Text)
+    ref         = Column(String(256))                   # 来源
 
 
 class GeoPoint(Base):
@@ -46,4 +47,5 @@ class GeoPoint(Base):
     latitude    = Column(String(64), nullable=False)
     name        = Column(String(128), nullable=False)
     belong      = Column(Integer, nullable=False)       # 所属聚落点
+
 
