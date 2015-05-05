@@ -9,3 +9,7 @@ archgis_app = Blueprint('archgis', __name__, template_folder='templates')
 @archgis_app.route('/', methods=['GET'])
 def Index():
     return render_template('archgis/_index.html', name="hello archgis")
+
+@archgis_app.route('/test')
+def Test():
+    return render_template('archgis/_test.html')
