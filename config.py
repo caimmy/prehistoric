@@ -1,9 +1,8 @@
 # _*_ coding:utf-8 _*_
 __author__ = 'caimiao'
 __date__ = '15-5-5'
-from main import app
 
-DEBUG_MODE = app.debug
+DEBUG_MODE = False
 
 # 主数据库配置
 _MYSQL_MASTER_HOST_DEBUG = '127.0.0.1:3306'

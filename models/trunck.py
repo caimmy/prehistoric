@@ -5,7 +5,9 @@ __date__ = '15-5-5'
 
 from sqlalchemy import Column, Integer, String, DateTime, Enum, CHAR, Text
 from datetime import datetime
-from models import Base
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 class User(Base):
     '''
@@ -45,7 +47,9 @@ class GeoPoint(Base):
     id          = Column(Integer, primary_key=True, autoincrement=True)
     longitude   = Column(String(64), nullable=False)
     latitude    = Column(String(64), nullable=False)
-    name        = Column(String(128), nullable=False)
+    height_l    = Column(Integer)                       # 高度的低点
+    height_h    = Column(Integer)                       # 高度的高点
+    area        = Column(Integer)                       # 面积（平方米）
     belong      = Column(Integer, nullable=False)       # 所属聚落点
 
 

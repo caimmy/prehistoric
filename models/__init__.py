@@ -2,12 +2,11 @@
 __author__ = 'caimiao'
 __date__ = '15-5-5'
 
-from config import DEBUG_MODE
+
+from config import DEBUG_MODE, MYSQL_MASTER_HOST, MYSQL_MASTER_DB, MYSQL_MASTER_USER, MYSQL_MASTER_PWD
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 
-from config import MYSQL_MASTER_HOST, MYSQL_MASTER_DB, MYSQL_MASTER_USER, MYSQL_MASTER_PWD
 
 mysql_master_engine = create_engine("mysql://%s:%s@%s/%s?charset=utf8" %\
                               (MYSQL_MASTER_USER, MYSQL_MASTER_PWD, MYSQL_MASTER_HOST, MYSQL_MASTER_DB),
@@ -17,4 +16,3 @@ mysql_master_engine = create_engine("mysql://%s:%s@%s/%s?charset=utf8" %\
 _mysql_master_factory = scoped_session(sessionmaker(bind=mysql_master_engine))
 
 db_session = _mysql_master_factory()
-Base = declarative_base()

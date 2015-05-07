@@ -2,7 +2,7 @@
 __author__ = 'caimiao'
 __date__ = '15-5-5'
 
-from models import mysql_master_engine, Base
+from models import mysql_master_engine
 from models.trunck import *
 
 
