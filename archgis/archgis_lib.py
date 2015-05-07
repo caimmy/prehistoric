@@ -38,9 +38,9 @@ class SettlementMgr:
                 geo_point.belong = ins_id
                 geo_point.longitude = longitude
                 geo_point.latitude = latitude
-                geo_point.height_h = int(hh)
-                geo_point.height_l = int(hl)
-                geo_point.area = int(area)
+                geo_point.height_h = int(hh) if '' != hh else 0
+                geo_point.height_l = int(hl) if '' != hl else 0
+                geo_point.area = int(area) if '' != area else 0
                 db_session.add(geo_point)
 
                 db_session.commit()
@@ -48,3 +48,7 @@ class SettlementMgr:
                 ins_id = -1
                 db_session.rollback()
         return ins_id
+
+    @staticmethod
+    def getAllSettlement():
+        return db_session.query(Settlement, GeoPoint).filter(Settlement.id==GeoPoint.belong).all()
