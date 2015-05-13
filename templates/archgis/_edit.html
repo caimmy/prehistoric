@@ -4,8 +4,9 @@
 <div class="container">
     <div class="flow">
         <button class="btn btn-primary" onclick="show_modal_add_new_settlement()">添加聚落点</button>
+        <a href="/gis" class="btn btn-info pull-right">前往地图</a>
     </div>
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-10 col-md-12">
         <table class="table table-hover">
             <thead>
             <tr>
@@ -17,7 +18,15 @@
             </tr>
             </thead>
             <tbody>
-
+            {% for _settlement in settlements %}
+            <tr>
+                <td></td>
+                <td>{{ _settlement.name }}</td>
+                <td>{{ _settlement.long }}</td>
+                <td>{{ _settlement.lati }}</td>
+                <td>{{ _settlement.desc }}</td>
+            </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
