@@ -26,7 +26,13 @@ def ajax_get_settlements():
 
 @archgis_app.route('/edit', methods=['GET'])
 def GetEdit():
-    return render_template('archgis/_edit.html', form_url=url_for('.AddSettlement'))
+    settlement_list = SettlementMgr.getAllSettlement()
+    settle_pts = []
+    for _p in settlement_list:
+        settle_pts.append({'name': _p[0].name, 'long': _p[1].longitude, 'lati': _p[1].latitude,
+                           'desc': _p[0].desc})
+    return render_template('archgis/_edit.html', form_url=url_for('.AddSettlement'),
+                           settlements=settle_pts)
 
 @archgis_app.route('/add_settlement', methods=['POST'])
 def AddSettlement():
